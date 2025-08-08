@@ -2,10 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 import { BottomTabsScreen as _BottomTabsScreen } from 'react-native-screens';
 
+import { NativeTabs, NativeTabTrigger, NativeTabOptions } from '../..';
 import { screen, renderRouter } from '../../../testing-library';
 import { Icon } from '../../common/elements';
-import { NativeTabs } from '../NativeTabs';
-import type { NativeTabOptions } from '../NativeTabsView';
 
 jest.mock('react-native-screens', () => {
   const { View }: typeof import('react-native') = jest.requireActual('react-native');
@@ -23,9 +22,9 @@ describe('Icons', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Icon drawable="stairs" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -42,11 +41,11 @@ describe('Icons', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Icon drawable="first" />
             <Icon drawable="second" />
             <Icon drawable="last" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -63,7 +62,7 @@ describe('Icons', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index" />
+          <NativeTabTrigger name="index" />
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -80,10 +79,10 @@ describe('Icons', () => {
   //       renderRouter({
   //         _layout: () => (
   //           <NativeTabs>
-  //             <NativeTabs.Trigger name="index">
+  //             <NativeTabTrigger name="index">
   //               <Icon src={require('../../../../assets/file.png')} />
   //               <Icon.Drawable name="stairs" />
-  //             </NativeTabs.Trigger>
+  //             </NativeTabTrigger>
   //           </NativeTabs>
   //         ),
   //         index: () => <View testID="index" />,
@@ -95,9 +94,9 @@ describe('Icons', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Icon sf="star" selectedSf="star.fill" drawable="stairs" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,

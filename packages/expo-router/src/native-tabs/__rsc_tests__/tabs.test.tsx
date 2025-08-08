@@ -8,8 +8,8 @@ it(`renders NativeTabs`, async () => {
   await expect(<NativeTabs />).toMatchFlightSnapshot();
 });
 
-it(`renders NativeTabs.Trigger`, async () => {
-  await expect(<NativeTabs.Trigger name="test" />).toMatchFlightSnapshot();
+it(`renders NativeTabTrigger`, async () => {
+  await expect(<NativeTabTrigger name="test" />).toMatchFlightSnapshot();
 });
 
 it(`renders Icon src`, async () => {

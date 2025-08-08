@@ -2,10 +2,9 @@ import React from 'react';
 import { Button, View } from 'react-native';
 import { BottomTabsScreen as _BottomTabsScreen } from 'react-native-screens';
 
+import { NativeTabs, NativeTabTrigger, NativeTabOptions } from '../..';
 import { screen, renderRouter, act, fireEvent } from '../../../testing-library';
 import { Badge, Icon, Label } from '../../common/elements';
-import { NativeTabs } from '../NativeTabs';
-import type { NativeTabOptions } from '../NativeTabsView';
 
 jest.mock('react-native-screens', () => {
   const { View }: typeof import('react-native') = jest.requireActual('react-native');
@@ -30,8 +29,8 @@ it('can pass options via options prop', () => {
   renderRouter({
     _layout: () => (
       <NativeTabs>
-        <NativeTabs.Trigger name="index" options={{ ...indexOptions }} />
-        <NativeTabs.Trigger name="second" options={{ ...secondOptions }} />
+        <NativeTabTrigger name="index" options={{ ...indexOptions }} />
+        <NativeTabTrigger name="second" options={{ ...secondOptions }} />
       </NativeTabs>
     ),
     index: () => <View testID="index" />,
@@ -53,9 +52,9 @@ it('can pass options via elements', () => {
   renderRouter({
     _layout: () => (
       <NativeTabs>
-        <NativeTabs.Trigger name="index">
+        <NativeTabTrigger name="index">
           <Icon sf="homepod.2.fill" />
-        </NativeTabs.Trigger>
+        </NativeTabTrigger>
       </NativeTabs>
     ),
     index: () => <View testID="index" />,
@@ -74,7 +73,7 @@ it('when no options are passed, default ones are used', () => {
   renderRouter({
     _layout: () => (
       <NativeTabs>
-        <NativeTabs.Trigger name="index" />
+        <NativeTabTrigger name="index" />
       </NativeTabs>
     ),
     index: () => <View testID="index" />,
@@ -107,9 +106,9 @@ describe('Icons', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Icon sf="homepod.2.fill" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -126,9 +125,9 @@ describe('Icons', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Icon selectedSf="homepod.2.fill" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -145,9 +144,9 @@ describe('Icons', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Icon sf="stairs" selectedSf="star.bubble" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -165,9 +164,9 @@ describe('Icons', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Icon drawable="stairs" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -184,10 +183,10 @@ describe('Icons', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Icon sf="stairs" />
             <Icon sf="homepod.2.fill" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -205,10 +204,10 @@ describe('Icons', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Icon selectedSf="stairs" />
             <Icon selectedSf="homepod.2.fill" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -225,11 +224,11 @@ describe('Icons', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Icon sf="stairs" selectedSf="star.bubble" />
             <Icon sf="homepod.2.fill" selectedSf="homepod.2.fill" />
             <Icon sf="0.circle.ar" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -247,11 +246,11 @@ describe('Icons', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Icon sf="stairs" selectedSf="star.bubble" />
             <Icon sf="homepod.2.fill" selectedSf="homepod.2.fill" />
             <Icon selectedSf="0.circle.ar" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -271,9 +270,9 @@ describe('Badge', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Badge>5</Badge>
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -290,9 +289,9 @@ describe('Badge', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Badge>New</Badge>
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -309,7 +308,7 @@ describe('Badge', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index" />
+          <NativeTabTrigger name="index" />
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -324,11 +323,11 @@ describe('Badge', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Badge>1</Badge>
             <Badge>2</Badge>
             <Badge>3</Badge>
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -345,9 +344,9 @@ describe('Badge', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Badge />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -362,9 +361,9 @@ describe('Badge', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Badge hidden />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -381,9 +380,9 @@ describe('Title', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Label>Custom Title</Label>
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -400,8 +399,8 @@ describe('Title', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index" />
-          <NativeTabs.Trigger name="one" />
+          <NativeTabTrigger name="index" />
+          <NativeTabTrigger name="one" />
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -419,11 +418,11 @@ describe('Title', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Label>First Title</Label>
             <Label>Second Title</Label>
             <Label>Last Title</Label>
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -440,9 +439,9 @@ describe('Title', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Label />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -457,9 +456,9 @@ describe('Title', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Label hidden />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -477,9 +476,9 @@ describe('Tab options', () => {
       renderRouter({
         _layout: () => (
           <NativeTabs>
-            <NativeTabs.Trigger name="index" disablePopToTop>
+            <NativeTabTrigger name="index" disablePopToTop>
               <Label>Custom Title</Label>
-            </NativeTabs.Trigger>
+            </NativeTabTrigger>
           </NativeTabs>
         ),
         index: () => <View testID="index" />,
@@ -500,12 +499,12 @@ describe('Tab options', () => {
       renderRouter({
         _layout: () => (
           <NativeTabs>
-            <NativeTabs.Trigger name="index">
+            <NativeTabTrigger name="index">
               <Label>Custom Title</Label>
-            </NativeTabs.Trigger>
-            <NativeTabs.Trigger name="one" disablePopToTop={false}>
+            </NativeTabTrigger>
+            <NativeTabTrigger name="one" disablePopToTop={false}>
               <Label>One</Label>
-            </NativeTabs.Trigger>
+            </NativeTabTrigger>
           </NativeTabs>
         ),
         index: () => <View testID="index" />,
@@ -538,9 +537,9 @@ describe('Tab options', () => {
       renderRouter({
         _layout: () => (
           <NativeTabs>
-            <NativeTabs.Trigger name="index" disableScrollToTop>
+            <NativeTabTrigger name="index" disableScrollToTop>
               <Label>Custom Title</Label>
-            </NativeTabs.Trigger>
+            </NativeTabTrigger>
           </NativeTabs>
         ),
         index: () => <View testID="index" />,
@@ -561,12 +560,12 @@ describe('Tab options', () => {
       renderRouter({
         _layout: () => (
           <NativeTabs>
-            <NativeTabs.Trigger name="index">
+            <NativeTabTrigger name="index">
               <Label>Custom Title</Label>
-            </NativeTabs.Trigger>
-            <NativeTabs.Trigger name="one" disableScrollToTop={false}>
+            </NativeTabTrigger>
+            <NativeTabTrigger name="one" disableScrollToTop={false}>
               <Label>One</Label>
-            </NativeTabs.Trigger>
+            </NativeTabTrigger>
           </NativeTabs>
         ),
         index: () => <View testID="index" />,
@@ -600,12 +599,12 @@ describe('Dynamic options', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index" options={{ title: 'Initial Title' }} />
+          <NativeTabTrigger name="index" options={{ title: 'Initial Title' }} />
         </NativeTabs>
       ),
       index: () => (
         <View testID="index">
-          <NativeTabs.Trigger name="index" options={{ title: 'Updated Title' }} />
+          <NativeTabTrigger name="index" options={{ title: 'Updated Title' }} />
         </View>
       ),
     });
@@ -644,16 +643,16 @@ describe('Dynamic options', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index" options={{ title: 'Initial Title' }} />
+          <NativeTabTrigger name="index" options={{ title: 'Initial Title' }} />
         </NativeTabs>
       ),
       index: () => (
         <View testID="index">
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Label>Updated Title</Label>
             <Badge>5</Badge>
             <Icon sf="homepod.2.fill" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </View>
       ),
     });
@@ -694,16 +693,16 @@ describe('Dynamic options', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Label>Initial Title</Label>
             <Badge>3</Badge>
             <Icon sf="0.circle" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => (
         <View testID="index">
-          <NativeTabs.Trigger
+          <NativeTabTrigger
             name="index"
             options={{
               title: 'Updated Title',
@@ -742,20 +741,20 @@ describe('Dynamic options', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Label>Initial Title</Label>
             <Badge>3</Badge>
             <Icon sf="0.circle" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: () => (
         <View testID="index">
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Label>Updated Title</Label>
             <Badge>5</Badge>
             <Icon sf="homepod.2.fill" />
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </View>
       ),
     });
@@ -787,9 +786,9 @@ describe('Dynamic options', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index">
+          <NativeTabTrigger name="index">
             <Label>Initial Title</Label>
-          </NativeTabs.Trigger>
+          </NativeTabTrigger>
         </NativeTabs>
       ),
       index: function Index() {
@@ -797,9 +796,9 @@ describe('Dynamic options', () => {
         const label = `Updated Title ${value}`;
         return (
           <View testID="index">
-            <NativeTabs.Trigger name="index">
+            <NativeTabTrigger name="index">
               <Label>{label}</Label>
-            </NativeTabs.Trigger>
+            </NativeTabTrigger>
             <Button title="Update" testID="update-button" onPress={() => setValue((v) => v + 1)} />
           </View>
         );

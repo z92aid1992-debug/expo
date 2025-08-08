@@ -2,10 +2,10 @@ import React from 'react';
 import { View } from 'react-native';
 import { BottomTabsScreen as _BottomTabsScreen } from 'react-native-screens';
 
+import { NativeTabs, NativeTabTrigger } from '../..';
 import { usePathname } from '../../../hooks';
 import { Redirect } from '../../../link/Redirect';
 import { screen, renderRouter, waitFor } from '../../../testing-library';
-import { NativeTabs } from '../NativeTabs';
 
 jest.mock('react-native-screens', () => {
   const { View }: typeof import('react-native') = jest.requireActual('react-native');
@@ -37,8 +37,8 @@ it('renders tabs correctly', () => {
   renderRouter({
     _layout: () => (
       <NativeTabs>
-        <NativeTabs.Trigger name="index" />
-        <NativeTabs.Trigger name="second" />
+        <NativeTabTrigger name="index" />
+        <NativeTabTrigger name="second" />
       </NativeTabs>
     ),
     index: () => <View testID="index" />,
@@ -55,8 +55,8 @@ describe('Tabs visibility', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index" />
-          <NativeTabs.Trigger name="second" />
+          <NativeTabTrigger name="index" />
+          <NativeTabTrigger name="second" />
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -74,10 +74,10 @@ describe('Tabs visibility', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index" />
-          <NativeTabs.Trigger name="second" />
-          <NativeTabs.Trigger hidden name="fourth" />
-          <NativeTabs.Trigger name="fifth" />
+          <NativeTabTrigger name="index" />
+          <NativeTabTrigger name="second" />
+          <NativeTabTrigger hidden name="fourth" />
+          <NativeTabTrigger name="fifth" />
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -99,8 +99,8 @@ describe('Tabs visibility', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index" />
-          <NativeTabs.Trigger name="second" />
+          <NativeTabTrigger name="index" />
+          <NativeTabTrigger name="second" />
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -121,8 +121,8 @@ describe('First focused tab', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index" />
-          <NativeTabs.Trigger name="second" />
+          <NativeTabTrigger name="index" />
+          <NativeTabTrigger name="second" />
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -142,8 +142,8 @@ describe('First focused tab', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="second" />
-          <NativeTabs.Trigger name="index" />
+          <NativeTabTrigger name="second" />
+          <NativeTabTrigger name="index" />
         </NativeTabs>
       ),
       index: () => <View testID="index" />,
@@ -164,8 +164,8 @@ describe('First focused tab', () => {
       renderRouter({
         _layout: () => (
           <NativeTabs>
-            <NativeTabs.Trigger name="first" />
-            <NativeTabs.Trigger name="second" />
+            <NativeTabTrigger name="first" />
+            <NativeTabTrigger name="second" />
           </NativeTabs>
         ),
         index: () => <View testID="index" />,
@@ -181,8 +181,8 @@ describe('First focused tab', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="first" />
-          <NativeTabs.Trigger name="second" />
+          <NativeTabTrigger name="first" />
+          <NativeTabTrigger name="second" />
         </NativeTabs>
       ),
       first: () => <View testID="first" />,
@@ -205,8 +205,8 @@ describe('First focused tab', () => {
         }
         return (
           <NativeTabs>
-            <NativeTabs.Trigger name="first" />
-            <NativeTabs.Trigger name="second" />
+            <NativeTabTrigger name="first" />
+            <NativeTabTrigger name="second" />
           </NativeTabs>
         );
       },
@@ -234,8 +234,8 @@ describe('First focused tab', () => {
         }
         return (
           <NativeTabs>
-            <NativeTabs.Trigger name="first" />
-            <NativeTabs.Trigger name="second" />
+            <NativeTabTrigger name="first" />
+            <NativeTabTrigger name="second" />
           </NativeTabs>
         );
       },
@@ -263,8 +263,8 @@ describe('First focused tab', () => {
         }
         return (
           <NativeTabs>
-            <NativeTabs.Trigger name="first" />
-            <NativeTabs.Trigger name="second" />
+            <NativeTabTrigger name="first" />
+            <NativeTabTrigger name="second" />
           </NativeTabs>
         );
       },

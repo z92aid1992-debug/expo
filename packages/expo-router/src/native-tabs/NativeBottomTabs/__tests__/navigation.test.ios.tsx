@@ -2,10 +2,10 @@ import React, { act } from 'react';
 import { View } from 'react-native';
 import { BottomTabsScreen as _BottomTabsScreen } from 'react-native-screens';
 
+import { NativeTabs, NativeTabTrigger } from '../..';
 import { router } from '../../../imperative-api';
 import { Link } from '../../../link/Link';
 import { screen, renderRouter, fireEvent } from '../../../testing-library';
-import { NativeTabs } from '../NativeTabs';
 
 jest.mock('react-native-screens', () => {
   const { View }: typeof import('react-native') = jest.requireActual('react-native');
@@ -41,8 +41,8 @@ describe('Native Bottom Tabs Navigation', () => {
     renderRouter({
       _layout: () => (
         <NativeTabs>
-          <NativeTabs.Trigger name="index" />
-          <NativeTabs.Trigger name="second" />
+          <NativeTabTrigger name="index" />
+          <NativeTabTrigger name="second" />
         </NativeTabs>
       ),
       index: () => (

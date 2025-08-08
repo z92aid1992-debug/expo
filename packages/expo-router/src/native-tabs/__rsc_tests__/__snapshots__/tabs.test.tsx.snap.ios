@@ -37,7 +37,7 @@ exports[`renders NativeTabs 1`] = `
 0:["$","$L2",null,{},"$1"]"
 `;
 
-exports[`renders NativeTabs.Trigger 1`] = `
+exports[`renders NativeTabTrigger 1`] = `
 "1:I["src/native-tabs/NativeBottomTabs/TabOptions.tsx",[],"TabTrigger",1]
 0:["$","$L1",null,{"name":"test"},null]"
 `;
